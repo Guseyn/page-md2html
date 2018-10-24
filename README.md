@@ -18,7 +18,7 @@ Translator from custom markdown(with custom elements) to html. It's not usual ma
    "paragraph": {
       "path": "./path/to/template_with_simpleText",
       "marker": "--"
-   }
+   },
    "youtube": {
      "path": "./path/to/template_with_youtube",
      "marker": "youtube"
