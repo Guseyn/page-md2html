@@ -1,8 +1,8 @@
-# page-markdown2html
+# page-md2html
 Provides async object that represent `html` that is get by `markdown` text.
 
 ```js
-new HtmlFromMarkdown(markdownText).call();
+new HtmlFromMd(markdownText).call();
 
 ```
 In addition there are some custom markdown elements:
