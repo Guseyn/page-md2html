@@ -1,5 +1,5 @@
 # page-md2html
-Provides async object that represent `html` that is get by `markdown` text.
+Provides async object `HtmlFromMd` that represents translated `html` text from `markdown` text.
 
 [![NPM Version][npm-image]][npm-url]
 
