@@ -1,7 +1,7 @@
 {
   "name": "@page-libs/md2html",
   "version": "1.0.0",
-  "description": "Translator from markdown(special variation of this language for page framework) to html.",
+  "description": "Provides async object HtmlFromMd that represents translated html text from markdown text.",
   "main": "index.js",
   "scripts": {
     "test": "node test-executor"
