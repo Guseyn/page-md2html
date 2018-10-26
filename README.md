@@ -10,8 +10,8 @@ But there are some new cool features:
 1. youtube: `[!youtube!][videoId]`
 2. soundcloud `[!soundcloud!][soundcloudIframe]`
 
-```js
-
 ## Usage
+
+```js
 
 new HtmlFromMd(markdownText).call();
