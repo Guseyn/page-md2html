@@ -1,0 +1,28 @@
+{
+  "name": "@page-libs/md2html",
+  "version": "1.0.0",
+  "description": "Translator from markdown(special variation of this language for page framework) to html.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/page-md2html.git"
+  },
+  "keywords": [
+    "page",
+    "markdown",
+    "html",
+    "cutie"
+  ],
+  "author": "guseyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guseyn/page-md2html/issues"
+  },
+  "homepage": "https://github.com/Guseyn/page-md2html#readme",
+  "dependencies": {
+    "@cuties/cutie": "^1.4.4"
+  }
+}
