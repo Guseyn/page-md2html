@@ -5,11 +5,6 @@ Provides async object that represent `html` that is get by `markdown` text.
 
 This library is based on this [one](https://github.com/evilstreak/markdown-js). So it supports reggular markdown features.
 
-But there are some new cool features:
-
-1. youtube: `[!youtube!][videoId]`
-2. soundcloud `[!soundcloud!][soundcloudIframe]`
-
 ## Usage
 
 ```js
