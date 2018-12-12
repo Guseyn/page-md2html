@@ -1,7 +1,8 @@
 'use strict'
 
 const { AsyncObject } = require('@cuties/cutie');
-const markdown = require( "markdown" ).markdown;
+const showdown  = require('showdown');
+const converter = new showdown.Converter();
 
 class HtmlFromMd extends AsyncObject {
 
@@ -11,7 +12,7 @@ class HtmlFromMd extends AsyncObject {
 
   definedSyncCall() {
     return (md) => {
-      return markdown.toHTML(md);
+      return converter.makeHtml(md);
     }
   }
 
