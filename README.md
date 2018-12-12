@@ -5,7 +5,7 @@ Provides async object `HtmlFromMd` that represents translated `html` text from `
 
 ## Concept
 
-This library is based on this [one](https://github.com/evilstreak/markdown-js). So it supports regular markdown features.
+This library is based on this [one](https://github.com/showdownjs/showdown). So it supports regular markdown features.
 
 ## Usage
 
