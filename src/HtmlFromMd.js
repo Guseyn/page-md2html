@@ -1,21 +1,19 @@
 'use strict'
 
-const { AsyncObject } = require('@cuties/cutie');
-const showdown  = require('showdown');
-const converter = new showdown.Converter();
+const { AsyncObject } = require('@cuties/cutie')
+const showdown = require('showdown')
+const converter = new showdown.Converter()
 
 class HtmlFromMd extends AsyncObject {
-
-  constructor(md) {
-    super(md);
+  constructor (md) {
+    super(md)
   }
 
-  definedSyncCall() {
+  syncCall () {
     return (md) => {
-      return converter.makeHtml(md);
+      return converter.makeHtml(md)
     }
   }
-
 }
 
-module.exports = HtmlFromMd;
+module.exports = HtmlFromMd
