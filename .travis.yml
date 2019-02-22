@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+- lts/*
+install: |-
+  npm ci
+  npm install -g codecov
+script: |-
+  npm run build || travis_terminate 1
+  ./node_modules/.bin/nyc report --reporter lcovonly -- -R spec
+  codecov
+  log=$(git log $TRAVIS_COMMIT_RANGE --oneline)
+  echo $'Commit message: '$TRAVIS_COMMIT_MESSAGE
+  echo $'**Change log:**<br/>'${log//$'\n'/<br/>}
+branches:
+  only:
+    - master
+before_deploy: |-
+  log=$(git log $TRAVIS_COMMIT_RANGE --oneline)
+  export TAG=$'v'$TRAVIS_COMMIT_MESSAGE
+  export BODY=$'**Change log:**<br/>'${log//$'\n'/<br/>}
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: rYC2i/0+pBjvO86umuXq+GlkCJ2aHN6wRJW3LrpT6mLbYfCPf47kW28PcJOy8PRw0s5npqw5ZZXStohzzbwE3VQ2LLbG9iPGSenx4Xkcbt96eIJ0U97cHAl3heoROcaxQE4hnRKjqA51cJPK96bLa5Yp/1dLSy8tCZK3sWJm8c9uevfQqEKTSfRZu9ovRUc9+Frni0z2wBql+IoVl/lhAxtklw1VWEp497JlkpjRw99EUO1m3qVD8y8YhFVkT/HmILRagaWwWnCJ4liAjDoeqKvnfjOQtpsSg+vprad6hZuY/V+CF0BQuYUCDztTAI+wqsrmlazGqQyl7J/kYCfQdWyZnpauWjHw+TnnGXw1fQbOA5CJpiJeZDldyQA0+NnAlfNiWngdm5AjHhgd13+N4/99G+db6oyTJLxCxvCmRcMW/nShShgWDjaa1SPGxi2sIMW9ayeiG5YGj1MSwZ5JumCmXnTGGPpoLKMCbfc+2IgmhgGyKw4C1B8VpEj9xuZd07KEKXEz10rcaCbmPXfu9CQD+tPNcNExa5Vfw6ciLmYhTwA/VkImD6AR8GWXBnjw1pQxrfDrai0+MGNckT6P6IR4k0gB4H3hOGkK1+8Rshj3LWPQPde1imZ0rDPthLGHStJKcNeLmecxEhuKxb18s1nutx8L/Hh9PxqBiL10K9I=
+    file: README.md
+    name: Release $TRAVIS_COMMIT_MESSAGE
+    tag_name: $TAG
+    body: $BODY
+    on:
+      repo: Guseyn/page-md2html
+      branch:
+        - master
+      condition: $TRAVIS_COMMIT_MESSAGE =~ ^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$
+  - provider: npm
+    email: guseynism@gmail.com
+    api_key:
+      secure: iYOxWWVWUD08Ye2REQixCHSnhiPAGV/htz/odz0yz2kfGNLAe7cm/1AGxgl1nD22zRliftNGebLqVIGjK87maoHDkFwlITai/6pMxccbBvsYIv+zETxUhsN7rogKklP9dt7RqSWoSsJgbW+AF67PtEHpHN9arl277vG+6y50kf5lblc+TP6sXnji4o+2tAjbvJtIH224yFh5lj6IrQ461OeW2Z+SMAQRmRIYPytFwfH5pQifCRRFZjFc+P1ADTBieXLW/clVkNzgr7XDJx6PzLHDgv7YzTgUbhxGwDvGdjicu0GzmT7jVw2keq+9osgCziBWdU2tvE903gaERRC6XZC2PBfGc+4GZrkHTH4mgL/zb/FDmkOHrfd+SsDP9XMnmRkKzyrc7QS3VJh7bySCuiwcp+Q583++I73K+xGHnLxb9xDeRC7gJ8vWMLE2kgkNXQSEbja4itEdQCceST0euh+2+BDf5A5msgkMml1PemwvVn6iNaabDEArCnKsfJYPSR6pUSR9ioeOQMxnKzd6qFbJ8w+cdcgTPNNPxdtSPLbUFZ09o990qkNS3/MygTff6Ok4KiMUuDHg4CbUp9JwijFGUlfOW7fcOBR8qhWIsFvnjcv0km/eDuomWDaX/2GnCrHcKXTF/8678f3kSZ64zeGrBEyRNQbHyNCpkY0bckU=
+    on:
+      repo: Guseyn/page-md2html
+      branch:
+        - master
+      condition: $TRAVIS_COMMIT_MESSAGE =~ ^([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})$
