@@ -1,6 +1,6 @@
 'use strict'
 
-const { AsyncObject } = require('@cuties/cutie')
+const { AsyncObject } = require('@page-libs/cutie')
 const showdown = require('showdown')
 const converter = new showdown.Converter()
 
