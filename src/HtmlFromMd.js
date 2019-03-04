@@ -2,16 +2,15 @@
 
 const { AsyncObject } = require('@page-libs/cutie')
 const showdown = require('showdown')
-const converter = new showdown.Converter()
 
 class HtmlFromMd extends AsyncObject {
-  constructor (md) {
-    super(md)
+  constructor (md, options) {
+    super(md, options || {})
   }
 
   syncCall () {
-    return (md) => {
-      return converter.makeHtml(md)
+    return (md, options) => {
+      return new showdown.Converter(options).makeHtml(md)
     }
   }
 }
